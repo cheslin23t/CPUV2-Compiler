@@ -1,0 +1,47 @@
+[
+  {
+    "instruction": "ldi",
+    "dest": "r1",
+    "value": 165
+  },
+  {
+    "instruction": "ldi",
+    "dest": "r2",
+    "value": 60
+  },
+  {
+    "instruction": "add",
+    "dest": "r3",
+    "lhs": "r1",
+    "rhs": "r0"
+  },
+  {
+    "instruction": "add",
+    "dest": "r4",
+    "lhs": "r2",
+    "rhs": "r0"
+  },
+  {
+    "instruction": "add",
+    "dest": "r5",
+    "lhs": "r3",
+    "rhs": "r4"
+  },
+  {
+    "instruction": "add",
+    "dest": "r1",
+    "lhs": "r5",
+    "rhs": "r0"
+  },
+  {
+    "instruction": "ldi",
+    "dest": "r2",
+    "value": 15
+  },
+  {
+    "instruction": "and",
+    "dest": "r3",
+    "lhs": "r1",
+    "rhs": "r2"
+  }
+]

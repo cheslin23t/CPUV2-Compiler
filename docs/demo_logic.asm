@@ -1,0 +1,3 @@
+LDI R1, 165
+LDI R2, 60
+ADD R3, R2, R1

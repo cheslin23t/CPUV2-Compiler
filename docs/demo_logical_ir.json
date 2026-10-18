@@ -1,0 +1,18 @@
+[
+  {
+    "instruction": "ldi",
+    "dest": "r1",
+    "value": 165
+  },
+  {
+    "instruction": "ldi",
+    "dest": "r2",
+    "value": 60
+  },
+  {
+    "instruction": "add",
+    "dest": "r3",
+    "lhs": "r2",
+    "rhs": "r1"
+  }
+]

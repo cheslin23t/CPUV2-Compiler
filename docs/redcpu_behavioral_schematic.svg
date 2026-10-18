@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050" role="img" aria-labelledby="title desc">
+  <title id="title">Custom 8-bit Redstone CPU behavioral schematic</title>
+  <desc id="desc">A conceptual, not wire-level, flow from a six-bit program counter through a 64-word ROM and instruction decode to register operands, an operation, and a destination register. It includes a verified three-instruction addition example, safe NOP gaps, clock timing, and hardware limitations.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#496179"/></marker>
+    <style>
+      .bg{fill:#f4f1e9}.panel{fill:#fffdf8;stroke:#cbd2d2;stroke-width:2}.dark{fill:#142b3b}.ink{fill:#173247}.muted{fill:#526879}.teal{fill:#147d78}.amber{fill:#b76d18}.red{fill:#a64c42}.line{stroke:#496179;stroke-width:4;fill:none;marker-end:url(#arrow)}.thin{stroke:#9aabb4;stroke-width:2;fill:none}.title{font:700 38px system-ui,sans-serif}.h{font:700 21px system-ui,sans-serif}.body{font:500 17px system-ui,sans-serif}.small{font:500 14px system-ui,sans-serif}.mono{font:600 17px ui-monospace,monospace}.tag{font:700 13px system-ui,sans-serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1600" height="1050"/>
+  <text x="58" y="65" class="title ink">Custom 8-bit Redstone CPU</text>
+  <text x="60" y="96" class="body muted">Behavioral schematic · explanatory model, not a verified redstone wiring diagram</text>
+  <rect x="1292" y="39" width="250" height="38" rx="19" fill="#e8f2ef"/>
+  <text x="1417" y="64" text-anchor="middle" class="tag teal">TESTED SUBSET ONLY</text>
+
+  <!-- conceptual CPU flow -->
+  <rect x="55" y="135" width="255" height="270" rx="18" class="panel"/>
+  <rect x="55" y="135" width="255" height="53" rx="18" class="dark"/>
+  <text x="182" y="170" text-anchor="middle" fill="#fff" class="h">Program counter</text>
+  <text x="82" y="230" class="mono ink">6 bits · 0–63</text>
+  <text x="82" y="263" class="body muted">Selects a ROM address</text>
+  <text x="82" y="307" class="body ink">Native clock:</text>
+  <text x="82" y="336" class="mono teal">146 game ticks / slot</text>
+  <text x="82" y="365" class="body muted">7.3 s at 20 TPS</text>
+  <path d="M 182 405 C 182 470, 182 480, 182 516" class="line"/>
+  <text x="195" y="467" class="small muted">address</text>
+
+  <rect x="55" y="525" width="255" height="270" rx="18" class="panel"/>
+  <rect x="55" y="525" width="255" height="53" rx="18" fill="#147d78"/>
+  <text x="182" y="560" text-anchor="middle" fill="#fff" class="h">ROM</text>
+  <text x="82" y="617" class="mono ink">64 × 16-bit words</text>
+  <text x="82" y="650" class="body muted">Addressed by the PC</text>
+  <text x="82" y="696" class="body ink">Word is shown MSB first</text>
+  <text x="82" y="729" class="body muted">Reserved tail: 56–63 = NOP</text>
+  <text x="82" y="762" class="small red">Fetch aliases: 60→56 · 61→57</text>
+
+  <path d="M 310 660 C 360 660, 370 320, 425 320" class="line"/>
+  <text x="339" y="495" class="small muted" transform="rotate(-49 339 495)">16-bit instruction word</text>
+
+  <rect x="425" y="180" width="350" height="280" rx="18" class="panel"/>
+  <rect x="425" y="180" width="350" height="53" rx="18" class="dark"/>
+  <text x="600" y="215" text-anchor="middle" fill="#fff" class="h">Instruction fields</text>
+  <text x="450" y="274" class="small muted">Ordinary register instruction, high → low</text>
+  <rect x="450" y="292" width="66" height="55" fill="#dce8ed" stroke="#fff"/>
+  <rect x="516" y="292" width="66" height="55" fill="#bfe3da" stroke="#fff"/>
+  <rect x="582" y="292" width="66" height="55" fill="#f7dfb9" stroke="#fff"/>
+  <rect x="648" y="292" width="102" height="55" fill="#ead2c9" stroke="#fff"/>
+  <text x="483" y="326" text-anchor="middle" class="mono ink">A</text>
+  <text x="549" y="326" text-anchor="middle" class="mono ink">B</text>
+  <text x="615" y="326" text-anchor="middle" class="mono ink">DEST</text>
+  <text x="699" y="326" text-anchor="middle" class="mono ink">OPCODE</text>
+  <text x="450" y="379" class="body ink">A = lhs · B = rhs</text>
+  <text x="450" y="408" class="body muted">Register nibbles reversed independently</text>
+  <text x="450" y="436" class="small muted">LDI immediate byte is not reversed</text>
+
+  <path d="M 775 320 C 820 320, 825 320, 870 320" class="line"/>
+  <text x="795" y="300" class="small muted">decode</text>
+
+  <rect x="870" y="180" width="260" height="280" rx="18" class="panel"/>
+  <rect x="870" y="180" width="260" height="53" rx="18" fill="#c48529"/>
+  <text x="1000" y="215" text-anchor="middle" fill="#fff" class="h">Register operands</text>
+  <rect x="900" y="265" width="200" height="58" rx="12" fill="#e7f1ed"/>
+  <text x="1000" y="301" text-anchor="middle" class="mono teal">R1–R14 usable</text>
+  <text x="900" y="357" class="body ink">R0 reads as zero</text>
+  <text x="900" y="386" class="body muted">R0 writes do not persist</text>
+  <text x="900" y="426" class="small red">R15 operand reads are faulty</text>
+
+  <path d="M 1130 320 L 1200 320" class="line"/>
+  <text x="1140" y="300" class="small muted">A/B values</text>
+
+  <rect x="1200" y="180" width="345" height="280" rx="18" class="panel"/>
+  <rect x="1200" y="180" width="345" height="53" rx="18" fill="#147d78"/>
+  <text x="1372" y="215" text-anchor="middle" fill="#fff" class="h">Operation → destination</text>
+  <text x="1230" y="278" class="mono ink">ADD · SUB · AND · NAND</text>
+  <text x="1230" y="309" class="mono ink">OR · XOR · NOR · XNOR</text>
+  <text x="1230" y="340" class="mono ink">INC · LDI · NOP</text>
+  <text x="1230" y="390" class="body muted">8-bit results wrap modulo 256</text>
+  <text x="1230" y="423" class="small red">DEC is known faulty; branches unverified</text>
+
+  <!-- example timeline -->
+  <rect x="350" y="525" width="1195" height="270" rx="18" class="panel"/>
+  <text x="382" y="567" class="h ink">Verified demo: 60 + 165 = 225</text>
+  <text x="382" y="595" class="small muted">Illustrative run begins at PC 0; reset/startup behavior is not specified.</text>
+  <g transform="translate(382 620)">
+    <rect x="0" y="0" width="137" height="110" rx="12" fill="#edf1f2" stroke="#cbd2d2"/>
+    <text x="68" y="28" text-anchor="middle" class="tag muted">PC 0</text><text x="68" y="57" text-anchor="middle" class="mono ink">0000</text><text x="68" y="87" text-anchor="middle" class="body muted">NOP</text>
+    <rect x="151" y="0" width="178" height="110" rx="12" fill="#e8f2ef" stroke="#96c7b7"/>
+    <text x="240" y="28" text-anchor="middle" class="tag teal">PC 1</text><text x="240" y="57" text-anchor="middle" class="mono ink">A58B</text><text x="240" y="87" text-anchor="middle" class="body ink">R1 ← 165</text>
+    <rect x="343" y="0" width="137" height="110" rx="12" fill="#edf1f2" stroke="#cbd2d2"/>
+    <text x="411" y="28" text-anchor="middle" class="tag muted">PC 2</text><text x="411" y="57" text-anchor="middle" class="mono ink">0000</text><text x="411" y="87" text-anchor="middle" class="body muted">NOP</text>
+    <rect x="494" y="0" width="178" height="110" rx="12" fill="#e8f2ef" stroke="#96c7b7"/>
+    <text x="583" y="28" text-anchor="middle" class="tag teal">PC 3</text><text x="583" y="57" text-anchor="middle" class="mono ink">3C4B</text><text x="583" y="87" text-anchor="middle" class="body ink">R2 ← 60</text>
+    <rect x="686" y="0" width="137" height="110" rx="12" fill="#edf1f2" stroke="#cbd2d2"/>
+    <text x="754" y="28" text-anchor="middle" class="tag muted">PC 4</text><text x="754" y="57" text-anchor="middle" class="mono ink">0000</text><text x="754" y="87" text-anchor="middle" class="body muted">NOP</text>
+    <rect x="837" y="0" width="178" height="110" rx="12" fill="#fff0da" stroke="#d9ad68"/>
+    <text x="926" y="28" text-anchor="middle" class="tag amber">PC 5</text><text x="926" y="57" text-anchor="middle" class="mono ink">48C1</text><text x="926" y="87" text-anchor="middle" class="body ink">R3 ← 225</text>
+    <rect x="1029" y="0" width="137" height="110" rx="12" fill="#edf1f2" stroke="#cbd2d2"/>
+    <text x="1097" y="28" text-anchor="middle" class="tag muted">PC 6</text><text x="1097" y="57" text-anchor="middle" class="mono ink">0000</text><text x="1097" y="87" text-anchor="middle" class="body muted">NOP</text>
+  </g>
+  <text x="382" y="765" class="small muted">After address 63 the 6-bit PC wraps to 0. No HALT is verified; stop the clock externally.</text>
+
+  <!-- footer -->
+  <rect x="55" y="835" width="1490" height="150" rx="18" fill="#142b3b"/>
+  <text x="85" y="877" fill="#fff" class="h">Do not animate as verified</text>
+  <text x="85" y="911" fill="#d3e0e4" class="body">No HALT · branches · RAM · stack · CALL/RET · input/output · usable flags</text>
+  <text x="85" y="944" fill="#d3e0e4" class="body">Do not invent reset behavior, ALU wiring, or cycle microsteps. This schematic shows behavior, not redstone wiring.</text>
+  <text x="85" y="971" fill="#9bc8c0" class="small">Software correctness and encoding vectors are not physical validation of every generated program.</text>
+</svg>
