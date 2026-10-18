@@ -50,6 +50,12 @@ The compiler does not emit HALT or claim that a program stops. The six-bit PC ev
 
 The native repaired clock advances every 146 game ticks (7.3 seconds at 20 TPS). The compiler does not model that timing. Known hardware defects also include incorrect DEC results, broken R15 operand reads, and ROM address aliases 60→56 and 61→57. Conditional branch behavior, overflow flags, and several potentially overlapping sequences are not certified. Passing software tests is not physical hardware validation.
 
+## Minecraft CPU schematic
+
+The complete physical CPU is included as [`schematics/8bCPU-repaired-v1.schem`](schematics/8bCPU-repaired-v1.schem), a byte-for-byte copy of the existing lab build (91×45×65 blocks; 32,543 non-air blocks). See the [placement/import instructions and known limits](schematics/README.md). The schematic, instructions, and parse-verification report are also inside [`CPU_Animation_Kit.zip`](CPU_Animation_Kit.zip). The export contains the original build ROM; the animation demo must be programmed separately.
+
+The SVG illustrates behavior, and the manifest below programs ROM cells; neither substitutes for this full Minecraft schematic.
+
 ## Physical manifest
 
 `placement_manifest(rom)` returns data only, one record for each address/bit cell. It maps address `a` and numeric word bit `i` to `x=286-2*(a%16)`, `y=86-4*(a//16)`, `z=30+2*i`; set bits use the tested west-facing redstone torch identifier and clear bits use air. Physical bit 0 corresponds to the rightmost character in a displayed 16-bit word.

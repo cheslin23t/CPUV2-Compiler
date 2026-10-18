@@ -1,0 +1,117 @@
+{
+  "file": "8bCPU-repaired-v1.schem",
+  "artifact_scope": "complete physical CPU; not ROM-only",
+  "source": {
+    "artifact": "minecraft-redstone-lab/schematics/8bCPU-repaired-v1.schem",
+    "world_snapshot": "cpu_repaired_v1",
+    "export_date": "2026-10-17",
+    "exporter": "WorldEdit 7.3.16 on Fabric",
+    "method": "Byte-for-byte copy of the existing full-world-selection export; no wiring generated or changed.",
+    "original_user_schematic": "863adb3c-22dd-4815-8813-995a2dcbd98f_8bCPU-Export.schematic"
+  },
+  "sha256": "7485daa252e126b7ca49d26235e1d47318c78b09fdf3d986da77560b7daac5c9",
+  "format": "Sponge schematic",
+  "schematic_version": 3,
+  "minecraft_java_version": "1.21.7",
+  "data_version": 4438,
+  "dimensions_xyz": [
+    91,
+    45,
+    65
+  ],
+  "offset_xyz": [
+    -84,
+    -43,
+    -43
+  ],
+  "copy_origin_xyz": [
+    340,
+    115,
+    39
+  ],
+  "original_world_bounds": {
+    "minimum": [
+      256,
+      72,
+      -4
+    ],
+    "maximum": [
+      346,
+      116,
+      60
+    ]
+  },
+  "total_cells": 266175,
+  "non_air_blocks": 32543,
+  "block_entity_count": 1433,
+  "block_entity_counts": {
+    "minecraft:barrel": 496,
+    "minecraft:comparator": 874,
+    "minecraft:sign": 63
+  },
+  "block_counts": {
+    "minecraft:air": 233632,
+    "minecraft:barrel": 496,
+    "minecraft:black_concrete": 1168,
+    "minecraft:blue_wool": 2,
+    "minecraft:comparator": 874,
+    "minecraft:cyan_concrete": 2,
+    "minecraft:cyan_stained_glass": 83,
+    "minecraft:cyan_wool": 2245,
+    "minecraft:glass": 19,
+    "minecraft:gray_concrete": 562,
+    "minecraft:gray_wool": 81,
+    "minecraft:lever": 15,
+    "minecraft:light_blue_stained_glass": 147,
+    "minecraft:light_blue_wool": 755,
+    "minecraft:light_gray_concrete": 1332,
+    "minecraft:light_gray_stained_glass": 1297,
+    "minecraft:light_gray_wool": 4572,
+    "minecraft:lime_stained_glass": 18,
+    "minecraft:magenta_wool": 163,
+    "minecraft:oak_sign": 1,
+    "minecraft:oak_wall_sign": 62,
+    "minecraft:orange_stained_glass": 14,
+    "minecraft:orange_wool": 104,
+    "minecraft:purple_concrete": 516,
+    "minecraft:purple_stained_glass": 108,
+    "minecraft:purple_wool": 146,
+    "minecraft:quartz_block": 8,
+    "minecraft:redstone_block": 18,
+    "minecraft:redstone_lamp": 49,
+    "minecraft:redstone_torch": 60,
+    "minecraft:redstone_wall_torch": 859,
+    "minecraft:redstone_wire": 12460,
+    "minecraft:repeater": 1555,
+    "minecraft:stone_button": 1,
+    "minecraft:target": 114,
+    "minecraft:tinted_glass": 1333,
+    "minecraft:white_concrete": 4,
+    "minecraft:white_stained_glass": 8,
+    "minecraft:white_wool": 1291,
+    "minecraft:yellow_wool": 1
+  },
+  "stored_nonzero_rom_words": {
+    "1": "0x001B",
+    "2": "0x012B",
+    "4": "0x2131"
+  },
+  "verification": {
+    "date": "2026-10-18",
+    "parser": "nbtlib 2.0.4",
+    "gzip_nbt_parse": true,
+    "all_palette_indices_and_cell_count_valid": true,
+    "block_entity_positions_unique_in_bounds_and_match_blocks": true,
+    "rom_cells_valid": true,
+    "matches_existing_export_sha256": true,
+    "scope": "File parsing and structural checks; no new in-game paste or full functional CPU certification.",
+    "demo_manifest_1024_coordinates_match_original_placement": true
+  },
+  "known_limits": [
+    "DEC is faulty",
+    "R15 operand reads return zero",
+    "ROM addresses 60 and 61 fetch 56 and 57",
+    "Conditional branch and overflow semantics are unverified",
+    "The included ROM is the original build program, not the animation demo"
+  ]
+}
